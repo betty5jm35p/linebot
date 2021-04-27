@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route("/webhook", methods=['GET','POST'])
 def webhook():
     if request.method == "GET":
-        VERIFY_TOKEN = "輸入自己的驗證Token"
+        VERIFY_TOKEN = "betty is happy"
         print(request)
         mode = request.args.get('hub.mode')
         sendToken = request.args.get('hub.verify_token')
@@ -33,7 +33,7 @@ def webhook():
         return "Success"
     
 def send_fb_message(to, message):
-    post_message_url = 'https://graph.facebook.com/v10.0/me/messages?access_token={token}'.format(token="123")
+    post_message_url = 'https://graph.facebook.com/v10.0/me/messages?access_token={token}'.format(token="EAAPaGXMC1V0BAGMItLm5QN41Is2RnVInoHpXqbDphfs02cfbbZBXRSCCJwQbddieLZBZCslkKt17BbzGoURgS7CKkck5cgcp5hZCAs4w9ZCp8XD7msKDFGC9u8ZCZCf2yytqstwvZADl3Iu7ZCEXyijDSksBH8DXYqT30wtZBXdHS7nwZDZD")
     response_message = json.dumps({"messaging_type":"RESPONSE",
                                     "recipient":{"id": to}, 
                                    "message":{"text":message}})
